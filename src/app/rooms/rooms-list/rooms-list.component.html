@@ -22,7 +22,8 @@
         <td>{{room.rating | number: '1.1-1': 'en-us'}}</td>
         <!-- <td><img src="{{room.photos}}" height="100px" width="100px"></td> -->
         <td>
-            <button class="btn btn-primary" (click)="selectRoom(room)">Select</button>
+            <!-- <button class="btn btn-primary" (click)="selectRoom(room)">Select</button> -->
+            <button class="btn btn-primary" [routerLink]="['/rooms', room.roomNumber]">Book Room</button>
         </td>
     </tr>
 </table>

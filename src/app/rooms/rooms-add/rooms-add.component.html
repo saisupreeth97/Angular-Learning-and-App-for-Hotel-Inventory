@@ -1,0 +1,49 @@
+{{roomsForm.pristine| json}}
+{{roomsForm.dirty| json}}
+{{roomsForm.valid| json}}
+{{roomsForm.invalid| json}}
+{{roomsForm.value| json}}
+
+<div *ngIf="successMessage!==''" class="alert alert-success">
+    {{successMessage}}
+</div>
+
+<form #roomsForm="ngForm" (ngSubmit)="AddRoom(roomsForm)">
+    <div class="form-group">
+        <input required type="text" class="form-control" name="roomType" [(ngModel)]="room.roomType"
+            placeholder="Room Type" />
+    </div>
+    <div class="form-group">
+        <input #roomamanaties="ngModel" required type="text" minlength="5" maxlength="20" class="form-control" name="amenities"
+            [(ngModel)]="room.amenities" placeholder="Amenities" />
+    </div>
+    <div class="alert alert-danger" *ngIf="roomamanaties.errors?.['minlength']">
+        Amenities should be atleast 5 characters long
+    </div>
+    <div *ngIf="roomamanaties.dirty && roomamanaties.errors?.['required']">
+        Please provide the Amenities.
+    </div>
+    <div class="form-group">
+        <input required type="number" class="form-control" name="price" [(ngModel)]="room.price"
+            placeholder="Room Price per Night" />
+    </div>
+    <div class="form-group">
+        <input required type="text" class="form-control" name="photos" [(ngModel)]="room.photos"
+            placeholder="Photos (Provide Link)" />
+    </div>
+    <div class="form-group">
+        <input required type="datetime" class="form-control" name="checkinTime" [(ngModel)]="room.checkinTime"
+            placeholder="Check-In Time" />
+    </div>
+    <div class="form-group">
+        <input required type="datetime" class="form-control" name="checkoutTime" [(ngModel)]="room.checkoutTime"
+            placeholder="Check-Out Time" />
+    </div>
+    <div class="form-group">
+        <input min="1" max="5" type="number" class="form-control" name="rating" [(ngModel)]="room.rating"
+            placeholder="Rating" />
+    </div>
+    <div>
+        <button [disabled]="roomsForm.invalid" class="btn btn-primary" type="submit">Add Room</button>
+    </div>
+</form>

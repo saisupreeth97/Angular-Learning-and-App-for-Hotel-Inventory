@@ -25,6 +25,7 @@
     <!-- {{getError$ | async}} -->
     Number of Rooms: {{roomsCount$ | async}}
 </h1>
+<router-outlet></router-outlet>
 <div *ngIf="rooms$ | async as rooms">
     <hinv-rooms-list [rooms]="rooms" [title]="title"
     (selectedRoom)="selectRoom($event)"></hinv-rooms-list>

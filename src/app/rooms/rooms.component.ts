@@ -4,6 +4,7 @@ import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from './services/rooms.service';
 import { Observable, Subject, Subscription, catchError, map, of } from 'rxjs';
 import { HttpEventType } from '@angular/common/http';
+import { ConfigService } from '../services/config.service';
 
 @Component({
   selector: 'hinv-rooms',
@@ -64,7 +65,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
 
   //constructor(private roomsService: RoomsService) - To inject the service
 
-  constructor(@SkipSelf() private roomsService: RoomsService) {
+  constructor(@SkipSelf() private roomsService: RoomsService, private configService: ConfigService) {
     // this.roomList = this.roomsService.getRooms();
   }
 

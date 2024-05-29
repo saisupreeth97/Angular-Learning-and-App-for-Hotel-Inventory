@@ -4,6 +4,9 @@ import { LoggerService } from './logger.service';
 import { RoomsService } from './rooms/services/rooms.service';
 import { LocalStorageToken } from './localstorage.token';
 import { InitService } from './init.service';
+import { ConfigService } from './services/config.service';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'hinv-root',
@@ -13,25 +16,32 @@ import { InitService } from './init.service';
   styleUrls: ['./app.component.scss'],
   // styles: [`h1 { color: red; }`]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
 
   title = 'hotelinverntoryapp';
 
   role = 'Admin';
 
-  @ViewChild('name', {static: true}) name!: ElementRef;
+  @ViewChild('name', { static: true }) name!: ElementRef;
 
   ngOnInit(): void {
+    // this.router.events.subscribe((event) => {console.log(event)});
+    this.router.events.pipe(filter((event) => event instanceof NavigationStart))
+      .subscribe((event) => console.log("Navigation Started"));
+    this.router.events.pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event) => console.log("Navigation Competed"));
     this.loggerService?.log('AppComponent.ngOnInit()');
     this.name.nativeElement.innerText = 'Hiton Hotel';
     this.localStorage.setItem('name', 'Hilton Hotel');
   }
 
   constructor(@Optional() private loggerService: LoggerService,
-      @Inject(LocalStorageToken) private localStorage: any,
-    private initService: InitService) {
-      console.log(initService.config);
+    @Inject(LocalStorageToken) private localStorage: any,
+    private initService: InitService,
+    private configService: ConfigService,
+    private router: Router) {
+    console.log(initService.config);
   }
 
   // @ViewChild('user', {read: ViewContainerRef}) vcr!: ViewContainerRef;

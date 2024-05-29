@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomsService } from '../rooms/services/rooms.service';
+import { ConfigService } from '../services/config.service';
 
 @Component({
   selector: 'hinv-header',
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   title: string = '';
 
-  constructor() { }
+  constructor(private configService: ConfigService) { }
 
   ngOnInit(): void {
   }

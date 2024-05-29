@@ -1,0 +1,116 @@
+<p>booking works!</p>
+{{bookingForm.value | json}}
+{{bookingForm.pristine | json}}
+{{bookingForm.dirty | json}}
+
+<!-- guestEmail: [''],
+checkinDate: [''],
+checkoutDate: [''],
+bookingStatus: [''],
+bookingAmount: [''],
+bookingDate: [''],
+mobileNumber: [''],
+guestName: [''],
+guestAddress: [''],
+guestCity: [''],
+guestState: [''],
+guestCountry: [''],
+guestZipCode: [''],
+guestCount: [''] -->
+
+<form class="example-form" [formGroup]="bookingForm" (ngSubmit)="addBooking()">
+    <mat-form-field class="example-full-width">
+        <mat-label>Room ID</mat-label>
+        <input type="text" matInput formControlName="roomId" placeholder="Room ID" />
+        <!-- @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+        <mat-error>Please enter a valid email address</mat-error>
+        }
+        @if (emailFormControl.hasError('required')) {
+        <mat-error>Email is <strong>required</strong></mat-error>
+        } -->
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input type="text" matInput formControlName="guestName" placeholder="Enter the Name" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input type="email" matInput formControlName="guestEmail" placeholder="Please Enter Email" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input type="text" matInput formControlName="mobileNumber" placeholder="Please Enter Mobile Number" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input type="number" matInput formControlName="bookingAmount" placeholder="booking Amount" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>CheckIn Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="checkinDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>CheckOut Date</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="checkoutDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Booking Date</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="bookingDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+
+    <!-- <mat-form-field class="example-full-width">
+        <input type="text" matInput formControlName="roomId" placeholder="Room ID"/>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Room ID</mat-label>
+        <input type="text" matInput formControlName="roomId" placeholder="Room ID"/>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Room ID</mat-label>
+        <input type="text" matInput formControlName="roomId" placeholder="Room ID"/>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Room ID</mat-label>
+        <input type="text" matInput formControlName="roomId" placeholder="Room ID"/>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Room ID</mat-label>
+        <input type="text" matInput formControlName="roomId" placeholder="Room ID"/>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Room ID</mat-label>
+        <input type="text" matInput formControlName="roomId" placeholder="Room ID"/>
+    </mat-form-field> -->
+
+    <div>
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Address
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+    
+                <mat-form-field>
+                    <mat-label>First name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <mat-label>Age</mat-label>
+                    <input matInput type="number" min="1">
+                </mat-form-field>
+    
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <div>
+        <button mat-raised-button color="primary">Book Room</button>
+    </div>
+</form>
