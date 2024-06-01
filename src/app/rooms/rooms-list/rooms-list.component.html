@@ -11,7 +11,7 @@
         <th>Rating</th>
         <th>Select Room</th>
     </tr>
-    <tr [ngClass]="e ? 'even':'odd'" *ngFor="let room of rooms; let e=even; let o=odd; let i=index"> <!--rooms | slice: 0:1-->
+    <tr [ngClass]="e ? 'even':'odd'" *ngFor="let room of rooms | filter: price; let e=even; let o=odd; let i=index"> <!--rooms | slice: 0:1-->
         <td>{{i}}</td> <!--i | percent-->
         <td>{{e?"Even":"Odd"}}</td>
         <td>{{room.roomNumber}}</td>
@@ -23,7 +23,7 @@
         <!-- <td><img src="{{room.photos}}" height="100px" width="100px"></td> -->
         <td>
             <!-- <button class="btn btn-primary" (click)="selectRoom(room)">Select</button> -->
-            <button class="btn btn-primary" [routerLink]="['/rooms', room.roomNumber]">Book Room</button>
+            <button class="btn btn-primary" [routerLink]="['/booking', room.roomNumber]">Book Room</button>
         </td>
     </tr>
 </table>
